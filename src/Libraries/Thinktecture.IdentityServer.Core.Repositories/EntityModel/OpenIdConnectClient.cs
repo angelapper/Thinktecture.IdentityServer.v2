@@ -32,6 +32,7 @@ namespace Thinktecture.IdentityServer.Repositories.Sql
     public class OpenIdConnectClientRedirectUri
     {
         public int ID { get; set; }
+
         [Required]
         public string RedirectUri { get; set; }
     }

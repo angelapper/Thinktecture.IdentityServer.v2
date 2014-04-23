@@ -6,11 +6,13 @@
 using System;
 using System.Data.Common;
 using System.Data.Entity;
+using System.Data.Entity.Migrations.History;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Thinktecture.IdentityServer.Repositories.Sql.Configuration;
 
 namespace Thinktecture.IdentityServer.Repositories.Sql
-{    
+{
+    [DbConfigurationType(typeof(MySqlConfiguration))] 
     public class IdentityServerConfigurationContext : DbContext
     {
         public DbSet<GlobalConfiguration> GlobalConfiguration { get; set; }
@@ -59,9 +61,8 @@ namespace Thinktecture.IdentityServer.Repositories.Sql
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            modelBuilder.Entity<OpenIdConnectClientEntity>().ToTable("OpenIdConnectClients");
-            modelBuilder.Entity<OpenIdConnectClientRedirectUri>().ToTable("OpenIdConnectClientsRedirectUris");
-
+            modelBuilder.Entity<OpenIdConnectClientEntity>().ToTable("OicClis");
+            modelBuilder.Entity<OpenIdConnectClientRedirectUri>().ToTable("OicCliReUris");
             base.OnModelCreating(modelBuilder);
         }
     }

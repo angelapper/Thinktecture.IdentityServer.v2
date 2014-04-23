@@ -1,12 +1,16 @@
-﻿using System.ComponentModel.Composition;
+﻿using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Data.Entity;
 using System.Security.Claims;
+using System.Web;
 using System.Web.Helpers;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using RedisSessionProvider.Config;
+using StackExchange.Redis;
 using Thinktecture.IdentityServer.Repositories;
 using Thinktecture.IdentityServer.Repositories.Sql;
 
@@ -23,6 +27,7 @@ namespace Thinktecture.IdentityServer.Web
         [Import]
         public IRelyingPartyRepository RelyingPartyRepository { get; set; }
 
+        private static ConfigurationOptions redisConfigOpts;
 
         protected void Application_Start()
         {
@@ -31,6 +36,16 @@ namespace Thinktecture.IdentityServer.Web
             
             // set the anti CSRF for name (that's a unqiue claim in our system)
             AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.Name;
+
+            MvcApplication.redisConfigOpts = ConfigurationOptions.Parse("localhost:6379");
+
+            // pass it to RedisSessionProvider configuration class
+            RedisConnectionConfig.GetSERedisServerConfig = (HttpContextBase context) =>
+            {
+                return new KeyValuePair<string, ConfigurationOptions>(
+                    "DefaultConnection",                // if you use multiple configuration objects, please make the keys unique
+                    MvcApplication.redisConfigOpts);
+            };
 
             // setup MEF
             SetupCompositionContainer();
