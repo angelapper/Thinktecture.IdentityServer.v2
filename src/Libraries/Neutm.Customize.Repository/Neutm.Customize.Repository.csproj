@@ -31,23 +31,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BrockAllen.MembershipReboot">
-      <HintPath>..\packages\BrockAllen.MembershipReboot.7.1.1\lib\net45\BrockAllen.MembershipReboot.dll</HintPath>
+      <HintPath>..\..\..\packages\BrockAllen.MembershipReboot.7.1.1\lib\net45\BrockAllen.MembershipReboot.dll</HintPath>
     </Reference>
     <Reference Include="BrockAllen.MembershipReboot.Ef">
-      <HintPath>..\packages\BrockAllen.MembershipReboot.Ef.7.1.0\lib\net45\BrockAllen.MembershipReboot.Ef.dll</HintPath>
+      <HintPath>..\..\..\packages\BrockAllen.MembershipReboot.Ef.7.1.0\lib\net45\BrockAllen.MembershipReboot.Ef.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\..\..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\..\..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MySql.Data.6.8.3\lib\net45\MySql.Data.dll</HintPath>
+      <HintPath>..\..\..\packages\MySql.Data.6.8.3\lib\net45\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="mysql.data.entity.EF6">
-      <HintPath>..\packages\MySql.Data.Entities.6.8.3.0\lib\net45\mysql.data.entity.EF6.dll</HintPath>
+      <HintPath>..\..\..\packages\MySql.Data.Entities.6.8.3.0\lib\net45\mysql.data.entity.EF6.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />

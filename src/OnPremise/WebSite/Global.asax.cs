@@ -9,6 +9,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using BrockAllen.MembershipReboot.Ef;
 using RedisSessionProvider.Config;
 using StackExchange.Redis;
 using Thinktecture.IdentityServer.Repositories;
@@ -33,7 +34,12 @@ namespace Thinktecture.IdentityServer.Web
         {
             // create empty config database if it not exists
             Database.SetInitializer(new ConfigurationDatabaseInitializer());
-            
+
+            Database.SetInitializer<DefaultMembershipRebootDatabase>(
+                 new MigrateDatabaseToLatestVersion<DefaultMembershipRebootDatabase,
+                 BrockAllen.MembershipReboot.Ef.Migrations.Configuration>());
+
+
             // set the anti CSRF for name (that's a unqiue claim in our system)
             AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.Name;
 

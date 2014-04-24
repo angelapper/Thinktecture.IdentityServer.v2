@@ -52,12 +52,8 @@ namespace Neutm.Customize.Repository
 
         public MrMembership()
         {
-            Database.SetInitializer<DefaultMembershipRebootDatabase>(
-                new MigrateDatabaseToLatestVersion<DefaultMembershipRebootDatabase, 
-                    BrockAllen.MembershipReboot.Ef.Migrations.Configuration>());
-
             var settings = SecuritySettings.FromConfiguration();
-            settings.RequireAccountVerification = false;
+            settings.RequireAccountVerification = true;
             settings.PasswordHashingIterationCount = 50000;
             var config = new MembershipRebootConfiguration(settings);
             var uarepo = new BrockAllen.MembershipReboot.Ef.DefaultUserAccountRepository();
